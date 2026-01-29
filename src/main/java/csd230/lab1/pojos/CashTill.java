@@ -1,5 +1,10 @@
 package csd230.lab1.pojos;
 
+import csd230.lab1.entities.CashTillEntity;
+
+/**
+ * DTO for {@link CashTillEntity}
+ */
 public class CashTill {
     private double runningTotal;
 

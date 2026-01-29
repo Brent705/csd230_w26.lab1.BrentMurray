@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>csd230</groupId>
-	<artifactId>FirstnameLastname</artifactId>
+	<artifactId>BrentMurray</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Application</name>
 	<description>Lab 1</description>
@@ -44,6 +44,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Source: https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.2</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 

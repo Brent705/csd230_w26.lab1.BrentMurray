@@ -1,5 +1,4 @@
 classDiagram
-    Editable <|--Product
     Product <|--Ticket
     Product <|--Publication
     Publication <|-- Book
@@ -11,6 +10,8 @@ classDiagram
 
     class Product{
         -String productId
+        +getProductId()
+        +setProductId()
     }
 
     class Serializable{
@@ -20,19 +21,6 @@ classDiagram
         +description
         +price
         +sellItem()
-    }
-    class Editable{
-        <<abstract>>
-        -Scanner input
-        +String getInput(String)
-        +int getInput(int)
-        +double getInput(double)
-        +boolean getInput(boolean)
-        +Date getInput(Date)
-        +Enum getInput(Enum)
-        +edit()*
-        +initialize()*
-
     }
     class Publication{
         <<Abstract>>
@@ -94,4 +82,13 @@ classDiagram
         +sellItem()
         +getPrice()
 
+    }
+    class Cart {
+        +Cart()
+        +addItem()
+        +getItems()
+        +setItems()
+        +equals()
+        +hashCode()
+        +toString()
     }
