@@ -7,6 +7,6 @@ import java.util.List;
 
 @Repository
 public interface ProductEntityRepository {
-    ProductEntity findProductEntityById(int id);
+//    ProductEntity findProductEntityById(int id);
     List<ProductEntity> findAll();
 }
