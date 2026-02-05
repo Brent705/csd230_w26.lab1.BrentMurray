@@ -11,12 +11,12 @@ import java.util.List;
 
 @Repository
 public interface BookEntityRepository extends JpaRepository<BookEntity, Long> {
-//    List<Book> findByIsbn(String isbn);
-//    Book findById(long id);
-//
-//    @Query
-//    BookEntity findByPriceRange(
-//            @Param("minPrice") double min,
-//            @Param("maxPrice") double max
-//    );
+    List<Book> findByIsbn(String isbn);
+    Book findById(long id);
+
+    @Query
+    BookEntity findByPriceRange(
+            @Param("minPrice") double min,
+            @Param("maxPrice") double max
+    );
 }

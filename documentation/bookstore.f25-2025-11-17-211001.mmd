@@ -7,6 +7,9 @@ classDiagram
     SaleableItem <|.. Product
     Serializable <|.. Product
     Product <-- CashTill
+    Product <|--BoxingGear
+    BoxingGear <|--Gloves
+    BoxingGear <|--Shoes
 
     class Product{
         -String productId
@@ -91,4 +94,56 @@ classDiagram
         +equals()
         +hashCode()
         +toString()
+    }
+    class BoxingGearEntity {
+        <<abstract>>
+        -String size
+        +BoxingGear()
+        +BoxingGear(String size)
+        +initialize()
+        +initSize()
+        +edit()
+        +getSize()
+        +setSize()
+        +toString()
+        +equals()
+        +hashCode()
+    }
+    class Gloves {
+        -String brand
+        -double price
+        -int weightOz
+        +Gloves()
+        +Gloves(String size, String brand, double price, int weightOz)
+        +initialize()
+        +edit()
+        +sellItem()
+        +getPrice()
+        +setPrice()
+        +getBrand()
+        +setBrand()
+        +getWeightOz()
+        +setWeightOz()
+        +toString()
+        +equals()
+        +hashCode()
+    }
+    class Shoes {
+        -String brand
+        -double price
+        -boolean highTop
+        +Shoes()
+        +Shoes(String size, String brand, double price, boolean highTop)
+        +initialize()
+        +edit()
+        +sellItem()
+        +getPrice()
+        +setPrice()
+        +getBrand()
+        +setBrand()
+        +isHighTop()
+        +setHighTop()
+        +toString()
+        +equals()
+        +hashCode()
     }

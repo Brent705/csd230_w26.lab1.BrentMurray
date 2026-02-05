@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DiscMagEntityRepository extends JpaRepository<DiscMagEntity, Long> {
-//    DiscMagEntity findByName(String name);
-//    DiscMagEntity findByDescription(String description);
+    DiscMagEntity findByName(String name);
+    DiscMagEntity findByDescription(String description);
 }

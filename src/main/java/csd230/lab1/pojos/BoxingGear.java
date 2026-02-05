@@ -19,7 +19,7 @@ public abstract class BoxingGear extends Product {
         this.size = getInput("M");
     }
 
-    protected void initSize() {
+    public void initSize() {
         System.out.println("Enter Size:");
         this.size = getInput("M");
     }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MagazineEntityRepository extends JpaRepository<MagazineEntity, Long> {
-//    MagazineEntity findByName(String name);
-//    MagazineEntity findByDescription(String description);
-//    MagazineEntity findByNameLike(String name);
+    MagazineEntity findByName(String name);
+    MagazineEntity findByDescription(String description);
+    MagazineEntity findByNameLike(String name);
 }

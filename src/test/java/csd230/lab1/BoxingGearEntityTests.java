@@ -1,5 +1,7 @@
 package csd230.lab1;
 
+// Test won't run properly 🤷‍♂️
+
 import csd230.lab1.entities.*;
 import csd230.lab1.repositories.*;
 import org.junit.jupiter.api.Test;

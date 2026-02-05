@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TicketEntityRepository extends JpaRepository<TicketEntity, Long> {
-//    TicketEntity findByDescription(String description);
+    TicketEntity findByDescription(String description);
 }
