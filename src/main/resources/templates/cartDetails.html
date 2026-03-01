@@ -4,6 +4,15 @@
     <title>Shopping Cart</title>
 </head>
 <body>
+<div style="float:right">
+    <!-- Display logged in user -->
+    Logged in as: <span sec:authentication="name">User</span>
+
+    <!-- Logout Form (Must be POST for security) -->
+    <form th:action="@{/logout}" method="post" style="display:inline;">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
 <h1>Your Shopping Cart</h1>
 <div th:if="${cart.products.empty}">
     <p>Your cart is empty.</p>

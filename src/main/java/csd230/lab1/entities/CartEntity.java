@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "cart_entity")
@@ -42,4 +44,10 @@ public class CartEntity {
         this.id = id;
     }
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+    // ... Getters and Setters for user ...
+    public UserEntity getUser() { return user; }
+    public void setUser(UserEntity user) { this.user = user; }
 }
