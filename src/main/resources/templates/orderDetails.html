@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order Confirmation</title>
+</head>
+<body>
+<h1>Order Confirmation</h1>
+<div th:if="${order}">
+    <div>
+        <h3>Your order is confirmed</h3>
+        <p><strong>Order ID:</strong> <span th:text="${order.id}"></span></p>
+        <p><strong>Date:</strong> <span th:text="${order.orderDate}"></span></p>
+        <p><strong>Total Amount Paid:</strong> $<span th:text="${#numbers.formatDecimal(order.totalAmount, 1, 2)}"></span></p>
+    </div>
+    <h3>Items Purchased:</h3>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Item</th>
+            <th>Type</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${order.products}">
+            <td>
+                <span th:if="${product instanceof T(csd230.lab1.entities.PublicationEntity)}"
+                      th:text="${product.title}"></span>
+
+                <span th:if="${product instanceof T(csd230.lab1.entities.TicketEntity)}"
+                      th:text="${product.description}"></span>
+
+                <span th:if="${!(product instanceof T(csd230.lab1.entities.PublicationEntity)) and !(product instanceof T(csd230.lab1.entities.TicketEntity))}"
+                      th:text="'Item #' + ${product.id}"></span>
+            </td>
+            <td th:text="${product.productType}"></td>
+            <td th:text="${product.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:unless="${order}">
+    <p>Order not found.</p>
+</div>
+<br/>
+<a th:href="@{/books}">Back to Store</a>
+</body>
+</html>
