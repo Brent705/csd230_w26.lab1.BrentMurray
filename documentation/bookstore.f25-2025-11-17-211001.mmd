@@ -10,6 +10,7 @@ classDiagram
     Product <|--BoxingGear
     BoxingGear <|--Gloves
     BoxingGear <|--Shoes
+    OrderEntity --> "*" Product : contains
 
     class Product{
         -String productId
@@ -146,4 +147,14 @@ classDiagram
         +toString()
         +equals()
         +hashCode()
+    }
+    class OrderEntity {
+        -Long id
+        -double totalAmount
+        -LocalDateTime orderDate
+        +addProduct(Product)
+        +getTotalAmount()
+        +setTotalAmount()
+        +getOrderDate()
+        +setOrderDate()
     }
