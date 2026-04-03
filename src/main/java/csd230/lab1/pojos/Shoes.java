@@ -53,7 +53,7 @@ public class Shoes extends BoxingGear {
     }
 
     @Override
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 

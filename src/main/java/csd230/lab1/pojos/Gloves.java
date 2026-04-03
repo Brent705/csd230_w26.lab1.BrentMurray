@@ -52,7 +52,7 @@ public class Gloves extends BoxingGear {
     }
 
     @Override
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 

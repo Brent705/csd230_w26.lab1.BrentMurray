@@ -31,7 +31,7 @@ public class GlovesEntity extends BoxingGearEntity {
     }
 
     @Override
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 

@@ -3,10 +3,15 @@ import csd230.lab1.entities.BookEntity;
 import csd230.lab1.entities.CartEntity;
 import csd230.lab1.repositories.BookEntityRepository;
 import csd230.lab1.repositories.CartEntityRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+@Tag(name = "Books", description = "Operations related to Book Management")
 @Controller
 @RequestMapping("/books")
 public class BookController {
@@ -14,6 +19,9 @@ public class BookController {
     private BookEntityRepository bookRepository;
     @Autowired
     private CartEntityRepository cartRepository;
+
+    @Operation(summary = "Get all books", description = "Returns the HTML view of the book list")
+    @ApiResponse(responseCode = "200", description = "Successfully retrieved list")
     @GetMapping
     public String getAllBooks(Model model) {
         model.addAttribute("books", bookRepository.findAll());

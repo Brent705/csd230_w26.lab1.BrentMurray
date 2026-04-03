@@ -1,6 +1,7 @@
 package csd230.lab1.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import csd230.lab1.pojos.SaleableItem;
 import jakarta.persistence.*;
 

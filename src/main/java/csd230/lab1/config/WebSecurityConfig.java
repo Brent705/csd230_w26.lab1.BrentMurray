@@ -1,6 +1,5 @@
 package csd230.lab1.config;
 
-
 import csd230.lab1.services.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,14 +28,32 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        // 1. Allow public access to specific endpoints
-                        .requestMatchers("/h2-console/**", "/login", "/register", "/css/**", "/js/**").permitAll()
+                                // 1. Allow public access to specific endpoints
+//                        .requestMatchers("/h2-console/**",
+//                                "/login",
+//                                "/css/**",
+//                                "/js/**",
+//                                "/api/rest/**"           // allow unrestricted access to rest api for testing
+//
+//                        ).permitAll()
+//
+                                .requestMatchers("/h2-console/**", "/login", "/css/**", "/js/**", "/api/rest/**", "/error").permitAll()
+                                // --- ADD THESE LINES FOR SWAGGER ---
+                                .requestMatchers(
+                                        "/v3/api-docs",          // The actual JSON data
+                                        "/v3/api-docs/**",       // Support for groups
+                                        "/swagger-ui/**",        // UI static resources
+                                        "/swagger-ui.html",      // UI entry point
+                                        "/v3/api-docs.yaml"     // YAML version
+                                ).permitAll()
 
-                        // 2. Admin only endpoints (CRUD operations on books)
-                        .requestMatchers("/books/add", "/books/edit/**", "/books/delete/**").hasRole("ADMIN")
+                                // ------------------------------------
 
-                        // 3. All other requests (view books, cart) require login
-                        .anyRequest().authenticated()
+                                // 2. Admin only endpoints (CRUD operations on books)
+                                .requestMatchers("/books/add", "/books/edit/**", "/books/delete/**").hasRole("ADMIN")
+
+                                // 3. All other requests (view books, cart) require login
+                                .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
@@ -54,9 +71,12 @@ public class WebSecurityConfig {
         http.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()));
 
         // Disable CSRF specifically for H2 Console
-        http.csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"));
+//        http.csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"));
 
-
+        // Inside your SecurityFilterChain bean
+        http.csrf(csrf -> csrf
+                .ignoringRequestMatchers("/h2-console/**", "/api/rest/**") // Ensure this matches exactly
+        );
         return http.build();
     }
 
